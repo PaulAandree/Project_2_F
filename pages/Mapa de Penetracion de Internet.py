@@ -7,7 +7,7 @@ import streamlit as st
 st.title("Penetración de internet por Provincia")
 
 # Read the data
-ruta_archivo = 'E:\GITHUB\Project_2_F\Proyecto telecom\Internet_Penetracion(1).csv'
+ruta_archivo = 'data\Internet_Penetracion.csv'
 datos = pd.read_csv(ruta_archivo)
 
 # Filter data for 2022
@@ -19,7 +19,7 @@ promedios = datos_2022.groupby(['Provincia'])['Accesos por cada 100 hogares'].me
 promedios = promedios.round(2)
 
 # Load the shapefile into a GeoDataFrame
-ruta_shapefile = 'E:\GITHUB\Project_2_F\Proyecto telecom\provincias\provincias.shp'
+ruta_shapefile = 'data\provincias.shp'
 mapa_provincias = gpd.read_file(ruta_shapefile)
 
 # Replace values in the "Provincia" column of the DataFrame
