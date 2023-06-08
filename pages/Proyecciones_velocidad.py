@@ -5,7 +5,7 @@ import numpy as np
 from pmdarima.arima import auto_arima
 
 # Load your DataFrame into a Pandas DataFrame object
-df = pd.read_csv(r"E:\GITHUB\Project_2_F\data\Historico_velocidad_internet_provincia.csv")
+df = pd.read_csv(r"data\Historico_velocidad_internet_provincia.csv")
 
 def main():
     # Add a title to your Streamlit app
