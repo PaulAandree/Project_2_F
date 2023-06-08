@@ -3,7 +3,7 @@ import plotly.express as px
 import streamlit as st
 
 # Read the data
-df2 = pd.read_csv("E:\GITHUB\Project_2_F\data\Internet_Penetracion.csv")
+df2 = pd.read_csv("data\Internet_Penetracion.csv")
 
 # Reemplazar las comas por puntos en la columna "Accesos por cada 100 hogares"
 df2['Accesos por cada 100 hogares'] = df2['Accesos por cada 100 hogares'].str.replace(',', '.')
