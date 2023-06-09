@@ -7,7 +7,7 @@ import streamlit as st
 st.title("Penetración de internet por Provincia")
 
 # Read the data
-ruta_archivo = 'data\Internet_Penetracion.csv'
+ruta_archivo = 'data/Internet_Penetracion.csv'
 datos = pd.read_csv(ruta_archivo)
 
 # Filter data for 2022
