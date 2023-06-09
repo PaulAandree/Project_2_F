@@ -5,7 +5,7 @@ import numpy as np
 import plotly.express as px
 
 # Load the data
-port = pd.read_csv(r'data\Portabilidad_movil.csv', sep=',')
+port = pd.read_csv(r'data/Portabilidad_movil.csv', sep=',')
 
 # Replace ',' with '' in the portability numbers
 port = port.replace('\,', '', regex=True)
