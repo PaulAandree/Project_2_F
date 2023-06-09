@@ -3,8 +3,8 @@ import plotly.express as px
 import streamlit as st
 
 # Read the data
-Int_movil = pd.read_csv(r'data\Ingresos_Internet_Movil_CD.csv')
-Int_fijo = pd.read_csv(r'data\Ingresos_Internet_Fijo_CD.csv')
+Int_movil = pd.read_csv(r'data/Ingresos_Internet_Movil_CD.csv')
+Int_fijo = pd.read_csv(r'data/Ingresos_Internet_Fijo_CD.csv')
 
 # Create a Streamlit app
 
