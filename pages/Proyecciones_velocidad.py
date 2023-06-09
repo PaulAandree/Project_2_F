@@ -1,11 +1,11 @@
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
+import altair as alt
 import numpy as np
 from pmdarima.arima import auto_arima
 
 # Load your DataFrame into a Pandas DataFrame object
-df = pd.read_csv(r"data\Historico_velocidad_internet_provincia.csv")
+df = pd.read_csv(r"data/Historico_velocidad_internet_provincia.csv")
 
 def main():
     # Add a title to your Streamlit app
@@ -41,23 +41,26 @@ def main():
     # Create the x-values for the forecasted data
     forecast_x = np.repeat(2022, 4)
 
-    # Plot the line graph with ARIMA projections
-    fig, ax = plt.subplots()
+    # Combine observed and forecasted data
+    combined_data = pd.concat([grouped_df, pd.DataFrame({'Anio': forecast_x, selected_column: forecast})])
 
-    # Plot the observed values
-    ax.plot(observed_x, grouped_df[selected_column], label="Observed")
+    # Create the line graph with ARIMA projections using Altair
+    chart = alt.Chart(combined_data).mark_line().encode(
+        x='Anio',
+        y=selected_column,
+        color=alt.condition(
+            alt.datum.Anio >= 2022,
+            alt.value('red'),
+            alt.value('blue')
+        ),
+        tooltip=[alt.Tooltip('Anio'), alt.Tooltip(selected_column)]
+    ).properties(
+        title=f"{selected_province} - Trimestre {selected_trimestre} - {selected_column}"
+    )
 
-    # Plot the forecasted values
-    ax.plot(forecast_x, forecast, linestyle='--', label="Forecast")
-
-    # Customize the plot
-    ax.set_xlabel('Year and Trimester')
-    ax.set_ylabel('Values')
-    ax.set_title(f"{selected_province} - Trimestre {selected_trimestre} - {selected_column}")
-    ax.legend()
-
-    # Display the plot using Streamlit
-    st.pyplot(fig)
+    # Display the chart using Streamlit
+    st.altair_chart(chart, use_container_width=True)
 
 if __name__ == '__main__':
     main()
+
