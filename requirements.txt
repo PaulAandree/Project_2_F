@@ -4,4 +4,3 @@ plotly.express
 streamlit
 geopandas
 altair
-pmdarima.arima
